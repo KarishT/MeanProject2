@@ -1,0 +1,18 @@
+
+  <div ng-controller = "sessionController">
+    <a href="/bucketlist">Bucket List</a>
+    <a href="/dashboard">Home</a>
+    <a href="/logout">Logout</a>
+        Bucket List
+      <ul ng-repeat = "list in userLists">
+
+          <li>{{list.title}}</li>
+          <li>{{list.descrip}}</li>
+          <li>{{list.createdAt | date: 'MM/dd/yyyy' }}</li>
+
+
+
+      </ul>
+
+
+  </div>

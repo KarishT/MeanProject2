@@ -1,0 +1,16 @@
+<div ng-controller='sessionController'>
+	<form name = 'loginForm' ng-submit='logReg()'>
+		<h3>Bucket Lists</h3>
+		<input type='text' name = 'username' ng-model='newUser.name' ng-minlength = '3' required>
+		<input type='submit' value='Log in or Register'>
+	</form>
+
+
+	<div ng-messages= 'loginForm.username.$error' >
+		<p ng-message = "minlength"> Name should be atleast 3 characters long</p>
+		<p ng-message = "required"> Name is required </p>
+	</div>
+
+
+	</div>
+</div>

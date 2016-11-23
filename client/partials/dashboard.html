@@ -1,0 +1,44 @@
+<div ng-controller='sessionController'>
+	<a href="/bucketlist">Bucket List</a>
+	<a href="/dashboard">Home</a>
+	<a href="/logout">Logout</a>
+
+	Welcome {{sessionUsers.name}}
+<div ng-controller = "listController">
+	<form name = "listForm" ng-submit = "addList()">
+		<input type="text" name="listtitle" ng-model = "newList.title" placeholder="Title" ng-minlength = "5" required>
+		<input type="text" name="listdescrip" ng-model = "newList.descrip" placeholder="Description" ng-minlength = "10" required>
+
+		<select ng-model = "newList.taggedperson">
+			<option ng-repeat = "user in users" value = "{{user.name}}" >{{user.name}}</option>
+		</select>
+		<input type="submit" name="addbutton" value="Add to List">
+	</form>
+
+	<div ng-messages= 'listForm.listtitle.$error' ng-if ="listForm.listtitle.$dirty">
+		<p ng-message = "minlength"> Title should be atleast 5 characters long</p>
+		<p ng-message = "required"> Title is required </p>
+	</div>
+	<div ng-messages= 'listForm.listdescrip.$error' ng-if ="listForm.listdescrip.$dirty" >
+		<p ng-message = "minlength"> Description should be atleast 10 characters long</p>
+		<p ng-message = "required"> Description is required </p>
+	</div>
+
+	<h4>Before I die I want to..</h4>
+	<ul ng-repeat = "list in lists">
+
+		<li>{{list._user.name}}</li>
+		<li>{{list.title}}</li>
+		<li>{{list.descrip}}</li>
+		<li>{{list.createdAt | date:'MM/dd/yyyy' }}</li>
+	</ul>
+
+	<h4>List of other users</h4>
+	<ul ng-repeat = "user in users">
+		<a href="#/{{user._id}}">{{user.name}}</a>
+	</ul>
+
+
+
+</div>
+</div>
